@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/login";
 import Dashboard from "./pages/Dashboard/dahsboard";
 import { AuthProvider } from "./context/authContext";
+import Authenticated from "./security/authenticated";
 
 function App(): JSX.Element {
 
@@ -11,7 +12,11 @@ function App(): JSX.Element {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={
+            <Authenticated>
+              <Dashboard />
+            </Authenticated>
+          } />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
