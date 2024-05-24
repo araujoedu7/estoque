@@ -1,21 +1,25 @@
-import React from 'react';
-import './header.css';
+import user_icon from "../../assets/user_icon.png";
+import { useContext } from "react";
+import { AuthUser } from "../../context/authContext";
 
-const Header: React.FC = () => {
-  return (
+export default function Header() {
 
-    <div className="header">
-      <div className="left">
-        Dashboard
-      </div>
+    const { user } = useContext(AuthUser);
 
-      <div className="right">
-        <span>Juliao balde</span>
-        <span>juliaobalde@123.com</span>
-        <img src="../../src/assets/user_icon.png" alt="aside_icon1.png"/> 
-      </div>
-    </div>
-  );
-};
-
-export default Header;
+    return (
+        <header className="flex justify-between items-center w-full border-b border-zinc-400 px-[50px] py-5">
+            <div>
+                <span className="text-2xl text-greenAFS-200 font-bold">Dashboard</span>
+            </div>
+            <div className="flex gap-[40px] text-zinc-600">
+                <div className="hidden sm:flex sm:flex-col text-right justify-center">
+                    <span className="text-xl font-semibold">{user?.name}</span>
+                    <span className="text-sm">{user?.email}</span>
+                </div>
+                <div>
+                    <img src={user_icon} alt="user_icon" className="w-[50px] cursor-pointer" />
+                </div>
+            </div>
+        </header>
+    )
+}
