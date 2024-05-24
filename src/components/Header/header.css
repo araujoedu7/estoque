@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 100vh;
+  align-items: center;
+  padding: 10px 50px;
+  background-color: #fff; 
+}
+
+.left {
+  font-size: 24px; 
+}
+
+.right {
+  display: flex;
+  align-items: center;
+ 
+}
+
+.right span {
+ margin-right: 10px; 
+}
