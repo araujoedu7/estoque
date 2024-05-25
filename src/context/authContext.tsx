@@ -40,6 +40,7 @@ function AuthProvider({ children }: typeChildren) {
                     setAuthenticated(true);
                 } else {
                     setAuthenticated(false);
+                    localStorage.removeItem("token");
                 }
             } catch (error) {
                 setAuthenticated(false);

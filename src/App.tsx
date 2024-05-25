@@ -4,6 +4,8 @@ import Login from "./pages/Login/login";
 import Dashboard from "./pages/Dashboard/dahsboard";
 import { AuthProvider } from "./context/authContext";
 import Authenticated from "./security/authenticated";
+import Home from "./pages/Dashboard/Home/home";
+import Estoque from "./pages/Dashboard/Estoque/estoque";
 
 function App(): JSX.Element {
 
@@ -12,11 +14,15 @@ function App(): JSX.Element {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={
+          <Route path="dashboard" element={
             <Authenticated>
               <Dashboard />
             </Authenticated>
-          } />
+          }>
+              <Route index element={<Home/>}/>
+              <Route path="início" element={<Home/>}/>
+              <Route path="estoque" element={<Estoque/>}/>
+          </Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>

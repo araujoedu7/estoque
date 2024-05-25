@@ -1,5 +1,7 @@
 import { useState } from "react";
 import logo_afs from "../../assets/afs-logo-aside.png";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const SquareGroup = () => {
     return (
@@ -28,6 +30,8 @@ const Logout = () => {
 
 
 export default function Aside() {
+
+    // const location = useLocation()
     const [openEstoque, setOpenEstoque] = useState<boolean>(false);
 
     return (
@@ -37,24 +41,45 @@ export default function Aside() {
             </div>
             <ul className="flex flex-col h-full justify-between mt-[50px]">
                 <div className="flex flex-col gap-[50px]">
-                    <li className="flex items-center text-white text-xl gap-3 cursor-pointer">
+                    <Link to={"/dashboard/início"} className={"flex items-center text-white text-xl gap-3 cursor-pointer"}>
                         <SquareGroup />
                         <span>Início</span>
-                    </li>
+                    </Link>
                     <li className="flex flex-col text-white text-xl gap-5 cursor-pointer" onClick={() => setOpenEstoque(!openEstoque)}>
                         <div className="flex gap-3 items-center">
                             <Box />
                             <span>Estoque</span>
                         </div>
-                        {openEstoque &&
-                            <ul className="flex flex-col gap-8 text-base">
-                                <li>Componentes</li>
-                                <li>Computador</li>
-                                <li>Notebook</li>
-                                <li>Materiais</li>
-                                <li>Cabos</li>
-                            </ul>
-                        }
+                        <AnimatePresence>
+                            {openEstoque &&
+                                <motion.ul className="flex flex-col gap-8 text-base list-disc"
+                                    initial={{
+                                        opacity: 0,
+                                        translateY: -50
+                                    }}
+
+                                    transition={{
+                                        duration: 0.3
+                                    }}
+
+                                    animate={{
+                                        opacity: 1,
+                                        translateY: 0
+                                    }}
+
+                                    exit={{
+                                        opacity: 0,
+                                        translateY: -50
+                                    }}
+                                >
+                                    <li>Componentes</li>
+                                    <li>Computador</li>
+                                    <li>Notebook</li>
+                                    <li>Materiais</li>
+                                    <li>Cabos</li>
+                                </motion.ul>
+                            }
+                        </AnimatePresence>
                     </li>
                 </div>
                 <div>
