@@ -7,7 +7,7 @@ export default function Header() {
     const { user } = useContext(AuthUser);
 
     return (
-        <header className="flex justify-between items-center w-full border-b border-zinc-400 px-[50px] py-5">
+        <header className="flex justify-between items-center w-full border-b border-zinc-400 px-[10px] sm:px-[50px] py-5">
             <div>
                 <span className="text-2xl text-greenAFS-200 font-bold">Dashboard</span>
             </div>

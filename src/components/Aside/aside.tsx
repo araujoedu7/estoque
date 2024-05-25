@@ -35,7 +35,7 @@ export default function Aside() {
     const [openEstoque, setOpenEstoque] = useState<boolean>(false);
 
     return (
-        <nav className="flex flex-col items-center bg-greenAFS-200 max-w-[200px] w-full h-screen py-5 select-none">
+        <nav className="flex flex-col items-center bg-greenAFS-200 max-w-[150px] sm:max-w-[200px] w-full h-screen py-5 select-none">
             <div>
                 <img src={logo_afs} alt="logo_afs" />
             </div>

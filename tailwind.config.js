@@ -20,6 +20,9 @@ export default {
       },
       backgroundImage: {
         'bgLogin': "url('src/assets/bg-estoque.jpg')"
+      },
+      height: {
+        'customHeight': 'calc(100% - 90px)'
       }
     }
   },
