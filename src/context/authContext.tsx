@@ -5,7 +5,7 @@ type contextAuth = {
     token: string | null;
     authenticated: boolean;
     login: (token: string | null) => void;
-    logout: (token: string | null) => void;
+    logout: () => void;
     user: userDecoded | null;
 }
 
@@ -34,7 +34,7 @@ function AuthProvider({ children }: typeChildren) {
             try {
                 const userDecoded: userDecoded = jwtDecode(token);
                 const tokenTime = Date.now() / 1000;
-                console.log(userDecoded)
+                console.log(userDecoded);
                 setUser(userDecoded);
                 if (userDecoded.exp > tokenTime) {
                     setAuthenticated(true);
@@ -52,12 +52,15 @@ function AuthProvider({ children }: typeChildren) {
     }, [token])
 
     function login(token: string | null) {
-        localStorage.setItem("token", JSON.stringify(token))
+        localStorage.setItem("token", JSON.stringify(token));
         setToken(token)
     }
 
     function logout() {
-
+        setAuthenticated(false);
+        setToken(null);
+        setUser(null);
+        localStorage.removeItem("token");
     }
 
     return (
