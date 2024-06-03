@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import logo_afs from "../../assets/afs-logo-aside.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { AuthUser } from "../../context/authContext";
 
 const SquareGroup = () => {
     return (
@@ -32,6 +33,7 @@ const Logout = () => {
 export default function Aside() {
 
     // const location = useLocation()
+    const { logout } = useContext(AuthUser);
     const [openEstoque, setOpenEstoque] = useState<boolean>(false);
 
     return (
@@ -72,8 +74,12 @@ export default function Aside() {
                                         translateY: -50
                                     }}
                                 >
-                                    <li>Componentes</li>
-                                    <li>Computador</li>
+                                    <li>
+                                        <Link to={"/dashboard/criar-componente"}>Componentes</Link>
+                                    </li>
+                                    <li>
+                                        <Link to={"/dashboard/criar-computador"}>Computador</Link>
+                                    </li>
                                     <li>Notebook</li>
                                     <li>Materiais</li>
                                     <li>Cabos</li>
@@ -82,7 +88,7 @@ export default function Aside() {
                         </AnimatePresence>
                     </li>
                 </div>
-                <div>
+                <div onClick={logout}>
                     <li className="flex items-center text-red-600 text-xl gap-3 cursor-pointer">
                         <Logout />
                         <span>Sair</span>
