@@ -5,7 +5,8 @@ import Dashboard from "./pages/Dashboard/dahsboard";
 import { AuthProvider } from "./context/authContext";
 import Authenticated from "./security/authenticated";
 import Home from "./pages/Dashboard/Home/home";
-import Estoque from "./pages/Dashboard/Estoque/estoque";
+import CreateComponentes from "./pages/Dashboard/Componentes/createComponentes";
+import CreateComputador from "./pages/Dashboard/Computador/createComputador";
 
 function App(): JSX.Element {
 
@@ -21,7 +22,8 @@ function App(): JSX.Element {
           }>
               <Route index element={<Home/>}/>
               <Route path="início" element={<Home/>}/>
-              <Route path="estoque" element={<Estoque/>}/>
+              <Route path="criar-componente" element={<CreateComponentes/>}/>
+              <Route path="criar-computador" element={<CreateComputador/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
